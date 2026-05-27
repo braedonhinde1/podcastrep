@@ -59,14 +59,14 @@ export default function Hero() {
 
         {/* Stats row */}
         <FadeUp delay={0.9}>
-          <div className="mt-20 grid grid-cols-3 gap-8 max-w-lg mx-auto">
+          <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-3xl mx-auto">
             {[
               { value: "Hundreds", label: "Of Brand Deals Closed" },
               { value: "Non-Exclusive", label: "Keep Your Network" },
               { value: "$0", label: "Upfront Cost" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="text-3xl sm:text-4xl font-extrabold gradient-text">
+                <div className="text-2xl sm:text-3xl font-extrabold gradient-text">
                   {stat.value}
                 </div>
                 <div className="text-xs sm:text-sm text-[var(--color-text-muted)] mt-1">
