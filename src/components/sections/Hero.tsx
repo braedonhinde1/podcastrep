@@ -24,15 +24,15 @@ export default function Hero() {
         {/* Headline */}
         <TextReveal
           as="h1"
-          text="Your Podcast Deserves Premium Advertisers"
+          text="Premium Ad Sales Representation for Your Podcast"
           className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight mb-6"
         />
 
         <FadeUp delay={0.5}>
           <p className="text-lg sm:text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto mb-10 leading-relaxed">
-            We find the brands and close the deals.
-            You keep creating the content your listeners love.
-            Earn what your audience is actually worth.
+            We have the direct connections to get your show in the room with major DR brands.
+            You keep creating — we handle the sales.
+            Non-exclusive representation that works alongside your existing partners.
           </p>
         </FadeUp>
 
@@ -61,8 +61,8 @@ export default function Hero() {
         <FadeUp delay={0.9}>
           <div className="mt-20 grid grid-cols-3 gap-8 max-w-lg mx-auto">
             {[
-              { value: "$2M+", label: "In Deals Closed" },
-              { value: "5-15%", label: "Commission Only" },
+              { value: "Hundreds", label: "Of Brand Deals Closed" },
+              { value: "Non-Exclusive", label: "Keep Your Network" },
               { value: "$0", label: "Upfront Cost" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">

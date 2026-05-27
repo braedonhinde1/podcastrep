@@ -24,7 +24,7 @@ export default function Footer() {
               Terms
             </a>
             <a
-              href="mailto:hello@podcastrep.com"
+              href="mailto:brady@podcastrep.com"
               className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)] transition-colors"
             >
               Contact

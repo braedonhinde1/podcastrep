@@ -19,6 +19,10 @@ const faqs = [
     a: "Never. You approve every brand, every script, and every placement before it goes live. We bring the deals — you decide what fits your show.",
   },
   {
+    q: "Can I work with you if I'm already with a network or another sales agency?",
+    a: "Absolutely — we're 100% non-exclusive. If your existing contracts allow for additional sales partners, we're happy to work alongside your current network or agency. We'll never ask you to drop anyone. Many of our shows have multiple monetization partners, and that's totally fine with us.",
+  },
+  {
     q: "How is this different from joining a podcast network?",
     a: "Networks often require exclusivity, take equity, or bundle your show with hundreds of others. We're purely ad sales representation — no content control, no lock-in, no equity. You can leave anytime.",
   },

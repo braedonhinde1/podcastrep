@@ -22,9 +22,9 @@ const features = [
     gradient: "from-[var(--color-brand-400)] to-[var(--color-accent-500)]",
   },
   {
-    title: "Sales Only, No Strings",
+    title: "100% Non-Exclusive",
     description:
-      "We sell your inventory and hand off the deal. You manage your own ad ops, creative, and delivery however you want. Pure sales representation.",
+      "Already with a network or another sales agency? No problem. We work alongside your existing partners — never against them. No lock-in, no exclusivity clauses, no conflicts. If your contracts allow it, we can sell too.",
     gradient: "from-[var(--color-accent-400)] to-[var(--color-brand-500)]",
   },
 ];
@@ -45,7 +45,7 @@ export default function WhyUs() {
             <span className="gradient-text">Independent Creators</span>
           </h2>
           <p className="mt-4 text-[var(--color-text-secondary)] max-w-xl mx-auto">
-            We&apos;re not a network and we&apos;re not an ad ops shop. We&apos;re purely your sales team — we find the brands, close the deals, and get out of the way.
+            We&apos;re not a network and we&apos;re not an ad ops shop. We&apos;re your dedicated sales representation — we leverage our direct brand connections to close premium deals for your show.
           </p>
         </FadeUp>
 

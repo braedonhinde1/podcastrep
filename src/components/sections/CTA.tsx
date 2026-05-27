@@ -53,7 +53,7 @@ export default function CTA() {
                 transition={{ delay: 0.4, duration: 0.4 }}
               >
                 <a
-                  href="mailto:hello@podcastrep.com"
+                  href="mailto:brady@podcastrep.com"
                   className="inline-flex items-center gap-2 px-10 py-4 text-lg font-bold rounded-full bg-white text-[var(--color-brand-600)] hover:bg-white/90 transition-colors shadow-xl"
                 >
                   Apply Now — It&apos;s Free
