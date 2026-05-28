@@ -1,81 +1,87 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, type FormEvent, type ChangeEvent } from "react";
 import { FadeUp } from "@/components/ui/motion";
 
+type SubmitState =
+  | { status: "idle" }
+  | { status: "submitting" }
+  | { status: "success" }
+  | { status: "error"; message: string };
+
+const inputClasses =
+  "w-full px-4 py-3 rounded-xl bg-white/[0.04] backdrop-blur-sm border border-white/10 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-brand-500)]/60 focus:bg-white/[0.06] focus:ring-2 focus:ring-[var(--color-brand-500)]/20 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed text-sm";
+
+const labelClasses =
+  "block text-[11px] font-semibold uppercase tracking-wider text-[var(--color-text-muted)] mb-1.5";
+
 export default function CTA() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    showName: "",
+    downloads: "",
+    message: "",
+  });
+  const [submit, setSubmit] = useState<SubmitState>({ status: "idle" });
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (submit.status === "error") setSubmit({ status: "idle" });
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (submit.status === "submitting") return;
+    setSubmit({ status: "submitting" });
+    try {
+      const res = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = (await res.json()) as { success?: boolean; error?: string };
+      if (!res.ok || !data.success) {
+        setSubmit({
+          status: "error",
+          message: data.error || "Something went wrong. Please try again.",
+        });
+        return;
+      }
+      setSubmit({ status: "success" });
+    } catch {
+      setSubmit({
+        status: "error",
+        message: "Network error. Check your connection and try again.",
+      });
+    }
+  };
+
+  const isSubmitting = submit.status === "submitting";
+  const isSuccess = submit.status === "success";
+
   return (
     <section
       id="cta"
-      className="py-28 px-6 bg-gradient-to-b from-transparent via-[var(--color-surface-raised)]/50 to-transparent"
+      className="py-24 px-6 bg-gradient-to-b from-transparent via-[var(--color-surface-raised)]/50 to-transparent"
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-3xl mx-auto">
         <FadeUp>
-          <div className="relative rounded-3xl overflow-hidden">
-            {/* Gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-brand-600)] via-[var(--color-brand-500)] to-[var(--color-accent-600)]" />
-            {/* Grid pattern overlay */}
-            <div
-              className="absolute inset-0 opacity-10"
+          <div className="relative rounded-3xl p-[1.5px] overflow-hidden shadow-2xl shadow-[var(--color-brand-500)]/30">
+            {/* Rotating conic ring — primary (coral) */}
+            <motion.div
+              aria-hidden
+              animate={{ rotate: 360 }}
+              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-[-100%] pointer-events-none"
               style={{
-                backgroundImage:
-                  "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-                backgroundSize: "40px 40px",
+                background:
+                  "conic-gradient(from 0deg at 50% 50%, transparent 0deg, var(--color-brand-500) 50deg, transparent 110deg, transparent 360deg)",
+                opacity: 0.7,
               }}
             />
-
-            <div className="relative z-10 px-8 sm:px-16 py-16 sm:py-20 text-center">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="text-3xl sm:text-5xl font-extrabold text-white leading-tight mb-6"
-              >
-                Ready to Monetize
-                <br />
-                Your Podcast?
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="text-lg text-white/80 max-w-xl mx-auto mb-10"
-              >
-                Apply today and we&apos;ll have your media kit ready within 48 hours.
-                No commitment, no upfront costs.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.4 }}
-              >
-                <a
-                  href="mailto:brady@podcastrep.com"
-                  className="inline-flex items-center gap-2 px-10 py-4 text-lg font-bold rounded-full bg-white text-[var(--color-brand-600)] hover:bg-white/90 transition-colors shadow-xl"
-                >
-                  Apply Now — It&apos;s Free
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2.5}
-                    className="w-5 h-5"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                    />
-                  </svg>
-                </a>
-              </motion.div>
-            </div>
-          </div>
-        </FadeUp>
-      </div>
-    </section>
-  );
-}
+            {/* Rotating conic ring — secondary counter-rotation
