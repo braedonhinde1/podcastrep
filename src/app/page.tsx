@@ -1,5 +1,6 @@
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
+import BrandStrip from "@/components/sections/BrandStrip";
 import HowItWorks from "@/components/sections/HowItWorks";
 import WhyUs from "@/components/sections/WhyUs";
 import Results from "@/components/sections/Results";
@@ -13,6 +14,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <BrandStrip />
         <HowItWorks />
         <WhyUs />
         <Results />

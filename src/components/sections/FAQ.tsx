@@ -4,15 +4,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { FadeUp, StaggerContainer } from "@/components/ui/motion";
 import { fadeUp } from "@/components/ui/motion";
+import { GlassCard } from "@/components/ui/glass-card";
 
 const faqs = [
   {
     q: "What size show do you work with?",
-    a: "We work with shows getting 5,000+ downloads per episode. Whether you're at 5K or 500K, we can help you monetize more effectively than going it alone.",
+    a: "Floor is 10,000 downloads per episode. Ceiling? There isn't one — we represent shows the major networks won't touch and shows they're already fighting over. The differentiator is our agency access, not your show size.",
   },
   {
     q: "How much does it cost?",
-    a: "Zero upfront. We take a transparent commission on deals we close — typically 5-15% depending on scale. Bigger shows get lower rates. If we don't sell, you don't pay.",
+    a: "Zero upfront. We take a transparent 15–25% commission on deals we close, sliding lower for larger shows. If we don't sell, you don't pay.",
   },
   {
     q: "Do I lose creative control?",
@@ -28,7 +29,7 @@ const faqs = [
   },
   {
     q: "How long until I see my first deal?",
-    a: "Most creators see their first deal within 30-60 days of onboarding. It depends on your niche, audience size, and the time of year (Q4 is always hot).",
+    a: "Most creators see their first deal within 30–60 days of onboarding. It depends on your niche, audience size, and the time of year (Q4 is always hot).",
   },
   {
     q: "Do you handle ad ops and delivery?",
@@ -36,36 +37,48 @@ const faqs = [
   },
 ];
 
-function FAQItem({ q, a }: { q: string; a: string }) {
+function FAQItem({ q, a, id }: { q: string; a: string; id: string }) {
   const [open, setOpen] = useState(false);
+  const panelId = `faq-panel-${id}`;
+  const buttonId = `faq-button-${id}`;
 
   return (
-    <div
-      className="border-b border-white/5 cursor-pointer group"
-      onClick={() => setOpen(!open)}
-    >
-      <div className="flex items-center justify-between py-5">
-        <h3 className="text-base font-semibold pr-4 group-hover:text-[var(--color-brand-400)] transition-colors">
-          {q}
-        </h3>
-        <motion.span
-          animate={{ rotate: open ? 45 : 0 }}
-          transition={{ duration: 0.2 }}
-          className="flex-shrink-0 text-xl text-[var(--color-text-muted)]"
+    <div>
+      <h3 className="m-0">
+        <button
+          type="button"
+          id={buttonId}
+          aria-expanded={open}
+          aria-controls={panelId}
+          onClick={() => setOpen((v) => !v)}
+          className="group/btn w-full flex items-start justify-between gap-4 px-6 py-5 text-left cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-500)]/60 rounded-3xl"
         >
-          +
-        </motion.span>
-      </div>
-      <AnimatePresence>
+          <span className="text-base font-semibold pr-2 text-white group-hover/btn:text-[var(--color-brand-400)] transition-colors">
+            {q}
+          </span>
+          <motion.span
+            aria-hidden
+            animate={{ rotate: open ? 45 : 0 }}
+            transition={{ duration: 0.25 }}
+            className="flex-shrink-0 text-xl text-[var(--color-text-muted)] group-hover/btn:text-[var(--color-brand-400)] transition-colors leading-none mt-0.5"
+          >
+            +
+          </motion.span>
+        </button>
+      </h3>
+      <AnimatePresence initial={false}>
         {open && (
           <motion.div
+            id={panelId}
+            role="region"
+            aria-labelledby={buttonId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm text-[var(--color-text-secondary)] leading-relaxed">
+            <p className="px-6 pb-5 text-sm text-[var(--color-text-secondary)] leading-relaxed">
               {a}
             </p>
           </motion.div>
@@ -77,26 +90,4 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-28 px-6">
-      <div className="max-w-3xl mx-auto">
-        <FadeUp className="text-center mb-12">
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-accent-400)] mb-3">
-            FAQ
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Questions?{" "}
-            <span className="gradient-text">Answers.</span>
-          </h2>
-        </FadeUp>
-
-        <StaggerContainer>
-          {faqs.map((faq) => (
-            <motion.div key={faq.q} variants={fadeUp}>
-              <FAQItem q={faq.q} a={faq.a} />
-            </motion.div>
-          ))}
-        </StaggerContainer>
-      </div>
-    </section>
-  );
-}
+    <section id="faq" 

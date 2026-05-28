@@ -1,31 +1,67 @@
 "use client";
 
-import { FadeUp, SlideLeft, SlideRight } from "@/components/ui/motion";
+import type { ReactNode } from "react";
+import { FadeUp } from "@/components/ui/motion";
+import { GlassCard } from "@/components/ui/glass-card";
 
-const features = [
+type Feature = {
+  title: string;
+  description: string;
+  accent: string;
+  icon: ReactNode;
+};
+
+const features: Feature[] = [
   {
-    title: "Data-Driven Matching",
+    title: "Direct Lines to Top DR Agencies",
     description:
-      "We use real ad intelligence data to match your show with brands that are already spending in your category. No cold outreach — warm, informed pitches.",
-    gradient: "from-[var(--color-brand-500)] to-[var(--color-brand-400)]",
+      "Years of relationships with every major direct-response agency buying podcast inventory — the same buyers placing on the biggest shows in the space. Your pitch lands on a desk where we already take the call.",
+    accent: "var(--color-brand-500)",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <circle cx="6" cy="6" r="2.5" />
+        <circle cx="18" cy="6" r="2.5" />
+        <circle cx="6" cy="18" r="2.5" />
+        <circle cx="18" cy="18" r="2.5" />
+        <circle cx="12" cy="12" r="2.5" />
+        <path d="M8.2 7.5 10 10.5M15.8 7.5 14 10.5M8.2 16.5 10 13.5M15.8 16.5 14 13.5" />
+      </svg>
+    ),
   },
   {
-    title: "Indie-First, Always",
+    title: "10K to 10M Downloads — Any Size",
     description:
-      "Big networks cherry-pick the top 1%. We specialize in shows with 5K-100K downloads that are undervalued by traditional ad sales teams.",
-    gradient: "from-[var(--color-accent-500)] to-[var(--color-accent-400)]",
+      "Floor is 10K downloads per episode. Ceiling? There isn't one. We represent shows the major networks won't touch and shows they're already fighting over. The differentiator is our agency access, not your show size.",
+    accent: "var(--color-accent-500)",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <path d="M3 21V10M9 21V6M15 21V3M21 21V14M3 21h18" />
+      </svg>
+    ),
   },
   {
-    title: "Transparent Deals",
+    title: "Transparent Commission: 15–25%",
     description:
-      "You see every offer, every rate, every contract. No black-box pricing. No inventory sold behind your back. Your show, your rules.",
-    gradient: "from-[var(--color-brand-400)] to-[var(--color-accent-500)]",
+      "Industry-standard commission, sliding lower for larger shows. You see every offer, every rate, every contract. No black-box pricing, no inventory sold behind your back.",
+    accent: "var(--color-brand-400)",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <path d="M19 5 5 19" />
+        <circle cx="7.5" cy="7.5" r="2.5" />
+        <circle cx="16.5" cy="16.5" r="2.5" />
+      </svg>
+    ),
   },
   {
     title: "100% Non-Exclusive",
     description:
-      "Already with a network or another sales agency? No problem. We work alongside your existing partners — never against them. No lock-in, no exclusivity clauses, no conflicts. If your contracts allow it, we can sell too.",
-    gradient: "from-[var(--color-accent-400)] to-[var(--color-brand-500)]",
+      "Already with a network or another sales agency? We work alongside, never against. No lock-in, no exclusivity clauses, no conflicts — if your contracts allow it, we can sell too.",
+    accent: "var(--color-accent-400)",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <path d="M18.178 8C19.286 8 20 8.834 20 9.99v9.02C20 20.166 19.286 21 18.178 21H5.822C4.714 21 4 20.166 4 19.01V9.99C4 8.834 4.714 8 5.822 8M8 8V6a4 4 0 0 1 8 0" />
+      </svg>
+    ),
   },
 ];
 
@@ -33,42 +69,8 @@ export default function WhyUs() {
   return (
     <section
       id="why-us"
-      className="py-28 px-6 bg-gradient-to-b from-transparent via-[var(--color-surface-raised)]/50 to-transparent"
+      className="py-24 px-6 bg-gradient-to-b from-transparent via-[var(--color-surface-raised)]/50 to-transparent"
     >
       <div className="max-w-6xl mx-auto">
         <FadeUp className="text-center mb-16">
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-accent-400)] mb-3">
-            Why PodcastRep
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Built for{" "}
-            <span className="gradient-text">Independent Creators</span>
-          </h2>
-          <p className="mt-4 text-[var(--color-text-secondary)] max-w-xl mx-auto">
-            We&apos;re not a network and we&apos;re not an ad ops shop. We&apos;re your dedicated sales representation — we leverage our direct brand connections to close premium deals for your show.
-          </p>
-        </FadeUp>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          {features.map((feature, i) => {
-            const Wrapper = i % 2 === 0 ? SlideLeft : SlideRight;
-            return (
-              <Wrapper key={feature.title} delay={i * 0.1}>
-                <div className="group relative p-8 rounded-2xl bg-[var(--color-surface-card)] border border-white/5 hover:border-white/10 transition-colors h-full">
-                  {/* Gradient accent line */}
-                  <div
-                    className={`absolute top-0 left-8 right-8 h-px bg-gradient-to-r ${feature.gradient} opacity-40 group-hover:opacity-70 transition-opacity`}
-                  />
-                  <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                  <p className="text-[var(--color-text-secondary)] leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              </Wrapper>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
+          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--

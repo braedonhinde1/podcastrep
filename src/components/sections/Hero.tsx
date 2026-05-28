@@ -2,10 +2,11 @@
 
 import { motion } from "framer-motion";
 import { TextReveal, FadeUp } from "@/components/ui/motion";
+import { GlassCard } from "@/components/ui/glass-card";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-16 pb-16">
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         {/* Badge */}
         <motion.div
@@ -18,7 +19,7 @@ export default function Hero() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-brand-400)] opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--color-brand-400)]" />
           </span>
-          Now Accepting New Shows
+          Now Booking 2026 Inventory
         </motion.div>
 
         {/* Headline */}
@@ -30,9 +31,7 @@ export default function Hero() {
 
         <FadeUp delay={0.5}>
           <p className="text-lg sm:text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto mb-10 leading-relaxed">
-            We have the direct connections to get your show in the room with major DR brands.
-            You keep creating — we handle the sales.
-            Non-exclusive representation that works alongside your existing partners.
+            We have active relationships with every major direct-response agency buying podcast inventory right now. You keep creating — we close the deals. Non-exclusive, no lock-in, 10K+ downloads per episode.
           </p>
         </FadeUp>
 
@@ -41,42 +40,33 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#cta"
-              className="group relative px-8 py-4 text-base font-bold rounded-full bg-gradient-to-r from-[var(--color-brand-500)] to-[var(--color-accent-500)] text-white shadow-lg shadow-[var(--color-brand-500)]/25 hover:shadow-xl hover:shadow-[var(--color-brand-500)]/30 transition-all"
+              className="group relative inline-block p-[1.5px] rounded-full overflow-hidden shadow-lg shadow-[var(--color-brand-500)]/30 hover:shadow-2xl hover:shadow-[var(--color-brand-500)]/50 transition-shadow duration-300"
             >
-              Apply for Representation
-              <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
-                &rarr;
+              {/* Rotating conic ring */}
+              <motion.span
+                aria-hidden
+                animate={{ rotate: 360 }}
+                transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-[-100%] pointer-events-none"
+                style={{
+                  background:
+                    "conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.9) 60deg, transparent 130deg, transparent 360deg)",
+                  opacity: 0.55,
+                }}
+              />
+              {/* Inner button */}
+              <span className="relative block px-8 py-4 text-base font-bold rounded-full bg-gradient-to-r from-[var(--color-brand-500)] to-[var(--color-accent-500)] text-white overflow-hidden">
+                <span
+                  aria-hidden
+                  className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-20deg] group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
+                />
+                <span className="relative">
+                  Let&apos;s See If We&apos;re a Fit
+                  <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
+                    &rarr;
+                  </span>
+                </span>
               </span>
             </a>
             <a
-              href="#how-it-works"
-              className="px-8 py-4 text-base font-semibold rounded-full border border-white/15 text-[var(--color-text-secondary)] hover:border-white/30 hover:text-[var(--color-text-primary)] transition-all backdrop-blur-sm"
-            >
-              See How It Works
-            </a>
-          </div>
-        </FadeUp>
-
-        {/* Stats row */}
-        <FadeUp delay={0.9}>
-          <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-3xl mx-auto">
-            {[
-              { value: "Hundreds", label: "Of Brand Deals Closed" },
-              { value: "Non-Exclusive", label: "Keep Your Network" },
-              { value: "$0", label: "Upfront Cost" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-2xl sm:text-3xl font-extrabold gradient-text">
-                  {stat.value}
-                </div>
-                <div className="text-xs sm:text-sm text-[var(--color-text-muted)] mt-1">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </FadeUp>
-      </div>
-    </section>
-  );
-}
+          

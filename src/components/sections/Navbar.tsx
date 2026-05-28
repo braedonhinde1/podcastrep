@@ -40,9 +40,13 @@ export default function Navbar() {
           ))}
           <a
             href="#cta"
-            className="px-5 py-2 text-sm font-semibold rounded-full bg-gradient-to-r from-[var(--color-brand-500)] to-[var(--color-accent-500)] text-white hover:opacity-90 transition-opacity"
+            className="group relative px-5 py-2 text-sm font-semibold rounded-full bg-gradient-to-r from-[var(--color-brand-500)] to-[var(--color-accent-500)] text-white shadow-md shadow-[var(--color-brand-500)]/25 hover:shadow-lg hover:shadow-[var(--color-brand-500)]/40 transition-all duration-300 overflow-hidden"
           >
-            Get Started
+            <span
+              aria-hidden
+              className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-20deg] group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
+            />
+            <span className="relative">Get Started</span>
           </a>
         </div>
 
@@ -79,20 +83,4 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] py-2"
-            >
-              {link.label}
-            </a>
-          ))}
-          <a
-            href="#cta"
-            onClick={() => setMobileOpen(false)}
-            className="mt-2 px-5 py-2.5 text-sm font-semibold rounded-full bg-gradient-to-r from-[var(--color-brand-500)] to-[var(--color-accent-500)] text-white text-center"
-          >
-            Get Started
-          </a>
-        </div>
-      </motion.div>
-    </motion.nav>
-  );
-}
+              className="text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] p
