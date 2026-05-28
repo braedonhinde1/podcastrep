@@ -40,7 +40,7 @@ const features: Feature[] = [
     ),
   },
   {
-    title: "Transparent Commission: 15–25%",
+    title: "Transparent Commission: 15-25%",
     description:
       "Industry-standard commission, sliding lower for larger shows. You see every offer, every rate, every contract. No black-box pricing, no inventory sold behind your back.",
     accent: "var(--color-brand-400)",
@@ -73,4 +73,43 @@ export default function WhyUs() {
     >
       <div className="max-w-6xl mx-auto">
         <FadeUp className="text-center mb-16">
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--
+          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-accent-400)] mb-3">
+            Why PodcastRep
+          </p>
+          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
+            Built on <span className="gradient-text">Real Relationships</span>
+          </h2>
+          <p className="mt-4 text-[var(--color-text-secondary)] max-w-2xl mx-auto leading-relaxed">
+            We&apos;re not a network and we&apos;re not an ad ops shop. We&apos;re your dedicated sales representation — with active relationships with every major direct-response agency buying podcast inventory right now. That access is built over years, not bought.
+          </p>
+        </FadeUp>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {features.map((feature, i) => (
+            <GlassCard
+              key={feature.title}
+              accent={feature.accent}
+              intensity="premium"
+              index={i}
+            >
+              <div className="p-8 flex flex-col h-full">
+                <div
+                  className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 mb-6 transition-colors duration-300 group-hover:bg-white/[0.06] group-hover:border-white/20"
+                  style={{ color: feature.accent }}
+                >
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 tracking-tight text-white">
+                  {feature.title}
+                </h3>
+                <p className="text-[var(--color-text-secondary)] leading-relaxed text-[15px]">
+                  {feature.description}
+                </p>
+              </div>
+            </GlassCard>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: "How much does it cost?",
-    a: "Zero upfront. We take a transparent 15–25% commission on deals we close, sliding lower for larger shows. If we don't sell, you don't pay.",
+    a: "Zero upfront. We take a transparent 15-25% commission on deals we close, sliding lower for larger shows. If we don't sell, you don't pay.",
   },
   {
     q: "Do I lose creative control?",
@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     q: "How long until I see my first deal?",
-    a: "Most creators see their first deal within 30–60 days of onboarding. It depends on your niche, audience size, and the time of year (Q4 is always hot).",
+    a: "Most creators see their first deal within 30-60 days of onboarding. It depends on your niche, audience size, and the time of year (Q4 is always hot).",
   },
   {
     q: "Do you handle ad ops and delivery?",
@@ -90,4 +90,31 @@ function FAQItem({ q, a, id }: { q: string; a: string; id: string }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" 
+    <section id="faq" className="py-24 px-6">
+      <div className="max-w-3xl mx-auto">
+        <FadeUp className="text-center mb-12">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-accent-400)] mb-3">
+            FAQ
+          </p>
+          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
+            Questions? <span className="gradient-text">Answers.</span>
+          </h2>
+        </FadeUp>
+
+        <StaggerContainer className="flex flex-col gap-3">
+          {faqs.map((faq, i) => (
+            <motion.div key={faq.q} variants={fadeUp}>
+              <GlassCard
+                intensity="minimal"
+                accent={i % 2 === 0 ? "var(--color-brand-500)" : "var(--color-accent-500)"}
+                animateIn={false}
+              >
+                <FAQItem q={faq.q} a={faq.a} id={String(i)} />
+              </GlassCard>
+            </motion.div>
+          ))}
+        </StaggerContainer>
+      </div>
+    </section>
+  );
+}
