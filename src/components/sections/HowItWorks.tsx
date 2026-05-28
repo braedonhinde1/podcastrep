@@ -90,4 +90,13 @@ export default function HowItWorks() {
                 </div>
                 <h3 className="text-lg font-bold mb-2 text-white">{step.title}</h3>
                 <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                  
+                  {step.description}
+                </p>
+              </div>
+            </GlassCard>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
