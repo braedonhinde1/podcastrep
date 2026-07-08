@@ -26,11 +26,21 @@
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
 }
 
 /* ── Base styles ── */
 html {
   scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-brand-500) 35%, transparent);
+  color: var(--color-text-primary);
 }
 
 body {
@@ -39,6 +49,45 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Typography accents ── */
+.serif-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: color-mix(in srgb, var(--color-brand-400) 85%, white);
+}
+
+.eyebrow::before,
+.eyebrow--rules::after {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in srgb, var(--color-brand-400) 55%, transparent)
+  );
+}
+
+.eyebrow--rules::after {
+  background: linear-gradient(
+    to left,
+    transparent,
+    color-mix(in srgb, var(--color-brand-400) 55%, transparent)
+  );
 }
 
 /* ── Gradient utilities ── */

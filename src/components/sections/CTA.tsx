@@ -128,7 +128,7 @@ export default function CTA() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="text-sm font-semibold uppercase tracking-widest text-[var(--color-brand-400)] mb-3"
+                    className="eyebrow eyebrow--rules mb-4"
                   >
                     Apply
                   </motion.p>
@@ -137,9 +137,12 @@ export default function CTA() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1, duration: 0.6 }}
-                    className="text-3xl sm:text-5xl font-extrabold leading-tight mb-4 tracking-tight"
+                    className="text-3xl sm:text-5xl font-extrabold leading-tight mb-4 tracking-[-0.02em]"
                   >
-                    Let&apos;s See <span className="gradient-text">If We&apos;re a Fit.</span>
+                    Let&apos;s see if we&apos;re{" "}
+                    <span className="serif-accent text-[var(--color-brand-400)] text-[1.12em]">
+                      a fit.
+                    </span>
                   </motion.h2>
                   <motion.p
                     initial={{ opacity: 0, y: 20 }}
@@ -238,22 +241,12 @@ export default function CTA() {
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="group relative inline-block p-[1.5px] rounded-full overflow-hidden shadow-lg shadow-[var(--color-brand-500)]/40 hover:shadow-2xl hover:shadow-[var(--color-brand-500)]/60 disabled:opacity-70 disabled:cursor-not-allowed transition-shadow duration-300"
+                          className="group relative inline-block rounded-full overflow-hidden bg-white text-[#0a0a0f] shadow-[0_0_40px_-12px_rgba(255,255,255,0.4)] hover:shadow-[0_0_60px_-12px_rgba(240,68,56,0.5)] hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300"
                         >
-                          <motion.span
-                            aria-hidden
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: isSubmitting ? 1.2 : 6, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-[-100%] pointer-events-none"
-                            style={{
-                              background: "conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.9) 60deg, transparent 130deg, transparent 360deg)",
-                              opacity: 0.55,
-                            }}
-                          />
-                          <span className="relative inline-flex items-center gap-2 px-10 py-4 text-lg font-bold rounded-full bg-gradient-to-r from-[var(--color-brand-500)] to-[var(--color-accent-500)] text-white overflow-hidden">
+                          <span className="relative inline-flex items-center gap-2 px-10 py-4 text-lg font-bold rounded-full overflow-hidden">
                             <span
                               aria-hidden
-                              className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-20deg] group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
+                              className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-black/[0.06] to-transparent skew-x-[-20deg] group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
                             />
                             <span className="relative inline-flex items-center gap-2">
                               {isSubmitting ? (

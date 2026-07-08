@@ -22,8 +22,8 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" className="text-xl font-extrabold tracking-tight">
-          <span className="gradient-text">Podcast</span>
-          <span className="text-[var(--color-text-primary)]">Rep</span>
+          <span className="text-[var(--color-text-primary)]">Podcast</span>
+          <span className="serif-accent text-[var(--color-brand-400)] text-[1.35rem]">Rep</span>
         </a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -38,11 +38,11 @@ export default function Navbar() {
           ))}
           <a
             href="#cta"
-            className="group relative px-5 py-2 text-sm font-semibold rounded-full bg-gradient-to-r from-[var(--color-brand-500)] to-[var(--color-accent-500)] text-white shadow-md shadow-[var(--color-brand-500)]/25 hover:shadow-lg hover:shadow-[var(--color-brand-500)]/40 transition-all duration-300 overflow-hidden"
+            className="group relative px-5 py-2 text-sm font-bold rounded-full bg-white text-[#0a0a0f] hover:shadow-[0_0_28px_-8px_rgba(240,68,56,0.5)] hover:-translate-y-px transition-all duration-300 overflow-hidden"
           >
             <span
               aria-hidden
-              className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-20deg] group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
+              className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-black/[0.06] to-transparent skew-x-[-20deg] group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
             />
             <span className="relative">Get Started</span>
           </a>
@@ -78,11 +78,11 @@ export default function Navbar() {
           <a
             href="#cta"
             onClick={() => setMobileOpen(false)}
-            className="group relative mt-2 px-5 py-2.5 text-sm font-semibold rounded-full bg-gradient-to-r from-[var(--color-brand-500)] to-[var(--color-accent-500)] text-white text-center shadow-md shadow-[var(--color-brand-500)]/25 overflow-hidden"
+            className="group relative mt-2 px-5 py-2.5 text-sm font-bold rounded-full bg-white text-[#0a0a0f] text-center overflow-hidden"
           >
             <span
               aria-hidden
-              className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-20deg] group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
+              className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-black/[0.06] to-transparent skew-x-[-20deg] group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
             />
             <span className="relative">Get Started</span>
           </a>

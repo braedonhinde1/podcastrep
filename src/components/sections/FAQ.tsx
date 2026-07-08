@@ -93,11 +93,12 @@ export default function FAQ() {
     <section id="faq" className="py-24 px-6">
       <div className="max-w-3xl mx-auto">
         <FadeUp className="text-center mb-12">
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-accent-400)] mb-3">
-            FAQ
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Questions? <span className="gradient-text">Answers.</span>
+          <p className="eyebrow eyebrow--rules mb-4">FAQ</p>
+          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.02em]">
+            Questions,{" "}
+            <span className="serif-accent text-[var(--color-brand-400)] text-[1.12em]">
+              answered.
+            </span>
           </h2>
         </FadeUp>
 

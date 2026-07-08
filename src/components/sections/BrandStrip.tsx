@@ -171,24 +171,16 @@ export default function BrandStrip() {
       {/* Heading */}
       <FadeUp>
         <div className="text-center mb-10 px-6">
-          <p
-            style={{
-              fontSize: "0.875rem",
-              fontWeight: 500,
-              textTransform: "uppercase",
-              letterSpacing: "0.2em",
-              color: "rgba(249, 112, 102, 0.7)",
-              marginBottom: "0.75rem",
-            }}
-          >
-            Brand Partners
-          </p>
+          <p className="eyebrow eyebrow--rules mb-3">Brand Partners</p>
           <h2
-            className="text-2xl sm:text-3xl font-bold"
+            className="text-2xl sm:text-3xl font-bold tracking-tight"
             style={{ color: "rgba(255,255,255,0.9)" }}
           >
             Direct access to brands{" "}
-            <span className="gradient-text">actively buying</span> podcast ads
+            <span className="serif-accent text-[var(--color-brand-400)] text-[1.15em]">
+              actively buying
+            </span>{" "}
+            podcast ads
           </h2>
         </div>
       </FadeUp>

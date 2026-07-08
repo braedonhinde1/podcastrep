@@ -3,9 +3,9 @@ import "./globals.css";
 import ShaderBackground from "@/components/ShaderBackground";
 
 export const metadata: Metadata = {
-  title: "PodcastRep — We Sell Your Ad Inventory",
+  title: "PodcastRep — Podcast Ad Sales Representation",
   description:
-    "Independent podcast ad sales representation. We find premium advertisers so you can focus on creating great content.",
+    "Independent podcast ad sales representation. Direct relationships with the agencies buying podcast inventory right now — you keep creating, we close the deals.",
 };
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap"
           rel="stylesheet"
         />
       </head>

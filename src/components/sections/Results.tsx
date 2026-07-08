@@ -177,28 +177,29 @@ export default function Results() {
     <section id="results" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <FadeUp className="text-center mb-16">
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-brand-400)] mb-3">
-            Track Record
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Proven <span className="gradient-text">Results in Podcast Sales</span>
+          <p className="eyebrow eyebrow--rules mb-4">Track Record</p>
+          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.02em]">
+            A track record{" "}
+            <span className="serif-accent text-[var(--color-brand-400)] text-[1.12em]">
+              buyers recognize
+            </span>
           </h2>
-          <p className="mt-4 text-[var(--color-text-secondary)] max-w-xl mx-auto">
+          <p className="mt-5 text-[var(--color-text-secondary)] max-w-xl mx-auto leading-relaxed">
             We&apos;ve spent years building direct relationships with the biggest DR brands in podcasting. When we pitch your show, we&apos;re talking to buyers who already take our calls.
           </p>
         </FadeUp>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-5">
           {credentials.map((cred, i) => (
-            <GlassCard key={cred.label} accent={cred.accent} intensity="premium" index={i}>
+            <GlassCard key={cred.label} accent={cred.accent} intensity="subtle" index={i}>
               <div className="p-8 flex flex-col h-full">
                 <div
-                  className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 mb-5 transition-colors duration-300 group-hover:bg-white/[0.06] group-hover:border-white/20"
+                  className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 mb-6 transition-colors duration-300 group-hover:bg-white/[0.06] group-hover:border-white/20"
                   style={{ color: cred.accent }}
                 >
                   {cred.icon}
                 </div>
-                <div className="text-3xl font-extrabold gradient-text mb-1 tracking-tight">
+                <div className="serif-accent text-[2.6rem] leading-none text-white mb-2">
                   {cred.value}
                 </div>
                 <h3 className="text-base font-bold mb-3 text-white">{cred.label}</h3>
@@ -210,49 +211,51 @@ export default function Results() {
           ))}
         </div>
 
-        <div className="mt-16">
-          <GlassCard intensity="premium" accent="var(--color-brand-500)" index={3}>
-            <div className="p-8 sm:p-10 text-center">
-              <p className="text-xs font-semibold uppercase tracking-widest text-[var(--color-brand-400)] mb-2 relative">
-                Categories
-              </p>
-              <p className="text-[var(--color-text-secondary)] text-sm mb-8 relative">
-                Brands we&apos;ve closed deals with across every major podcast ad vertical
-              </p>
-              <motion.div
-                variants={pillStagger}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-60px" }}
-                className="flex flex-wrap items-center justify-center gap-3 relative"
-              >
-                {categories.map((cat) => (
-                  <motion.span
-                    key={cat.label}
-                    variants={pillVariant}
-                    whileHover={{ y: -3, scale: 1.06 }}
-                    transition={{ type: "spring", stiffness: 320, damping: 18 }}
-                    style={
-                      {
-                        "--pill-accent": cat.accent,
-                        color: cat.accent,
-                        borderColor: `color-mix(in srgb, ${cat.accent} 28%, transparent)`,
-                        backgroundColor: `color-mix(in srgb, ${cat.accent} 6%, transparent)`,
-                      } as React.CSSProperties
-                    }
-                    className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold border transition-[background-color,border-color,box-shadow,color] duration-300 cursor-default select-none hover:[border-color:var(--pill-accent)] hover:[background-color:color-mix(in_srgb,var(--pill-accent)_14%,transparent)] hover:shadow-[0_0_26px_-4px_var(--pill-accent)]"
+        <div className="mt-20 relative">
+          <div
+            aria-hidden
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-px"
+            style={{
+              background:
+                "linear-gradient(to right, transparent, rgba(249,112,102,0.25), transparent)",
+            }}
+          />
+          <div className="pt-14 text-center">
+            <p className="eyebrow eyebrow--rules mb-3">Categories</p>
+            <p className="text-[var(--color-text-secondary)] text-sm mb-10">
+              Brands we&apos;ve closed deals with across every major podcast ad vertical
+            </p>
+            <motion.div
+              variants={pillStagger}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              className="flex flex-wrap items-center justify-center gap-3 max-w-4xl mx-auto"
+            >
+              {categories.map((cat) => (
+                <motion.span
+                  key={cat.label}
+                  variants={pillVariant}
+                  whileHover={{ y: -3 }}
+                  transition={{ type: "spring", stiffness: 320, damping: 18 }}
+                  style={
+                    {
+                      "--pill-accent": cat.accent,
+                    } as React.CSSProperties
+                  }
+                  className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold border border-white/[0.08] bg-white/[0.02] text-[var(--color-text-secondary)] transition-[background-color,border-color,box-shadow,color] duration-300 cursor-default select-none hover:text-white hover:[border-color:color-mix(in_srgb,var(--pill-accent)_60%,transparent)] hover:[background-color:color-mix(in_srgb,var(--pill-accent)_10%,transparent)] hover:shadow-[0_0_26px_-6px_var(--pill-accent)]"
+                >
+                  <span
+                    className="opacity-80 group-hover:opacity-100 transition-opacity"
+                    style={{ color: cat.accent }}
                   >
-                    <span className="opacity-80 group-hover:opacity-100 transition-opacity" style={{ color: cat.accent }}>
-                      {cat.icon}
-                    </span>
-                    <span className="opacity-90 group-hover:opacity-100 transition-opacity">
-                      {cat.label}
-                    </span>
-                  </motion.span>
-                ))}
-              </motion.div>
-            </div>
-          </GlassCard>
+                    {cat.icon}
+                  </span>
+                  <span>{cat.label}</span>
+                </motion.span>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

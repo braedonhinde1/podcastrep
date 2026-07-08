@@ -72,24 +72,27 @@ export default function WhyUs() {
       className="py-24 px-6 bg-gradient-to-b from-transparent via-[var(--color-surface-raised)]/50 to-transparent"
     >
       <div className="max-w-6xl mx-auto">
-        <FadeUp className="text-center mb-16">
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-accent-400)] mb-3">
-            Why PodcastRep
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Built on <span className="gradient-text">Real Relationships</span>
-          </h2>
-          <p className="mt-4 text-[var(--color-text-secondary)] max-w-2xl mx-auto leading-relaxed">
+        <FadeUp className="mb-16 grid lg:grid-cols-[1.1fr_1fr] gap-8 items-end">
+          <div>
+            <p className="eyebrow mb-4">Why PodcastRep</p>
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.02em]">
+              Built on{" "}
+              <span className="serif-accent text-[var(--color-brand-400)] text-[1.12em]">
+                real relationships
+              </span>
+            </h2>
+          </div>
+          <p className="text-[var(--color-text-secondary)] leading-relaxed lg:pb-1">
             We&apos;re not a network and we&apos;re not an ad ops shop. We&apos;re your dedicated sales representation — with active relationships with every major direct-response agency buying podcast inventory right now. That access is built over years, not bought.
           </p>
         </FadeUp>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-5">
           {features.map((feature, i) => (
             <GlassCard
               key={feature.title}
               accent={feature.accent}
-              intensity="premium"
+              intensity="subtle"
               index={i}
             >
               <div className="p-8 flex flex-col h-full">

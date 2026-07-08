@@ -59,36 +59,39 @@ export default function HowItWorks() {
     <section id="how-it-works" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <FadeUp className="text-center mb-16">
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-brand-400)] mb-3">
-            The Process
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Four Steps to{" "}
-            <span className="gradient-text">More Revenue</span>
+          <p className="eyebrow eyebrow--rules mb-4">The Process</p>
+          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.02em]">
+            Four steps to{" "}
+            <span className="serif-accent text-[var(--color-brand-400)] text-[1.12em]">
+              more revenue
+            </span>
           </h2>
         </FadeUp>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {steps.map((step, i) => (
             <GlassCard
               key={step.number}
               accent={step.accent}
-              intensity="premium"
+              intensity="subtle"
               index={i}
             >
-              <div className="p-6 flex flex-col h-full">
-                <div className="flex items-center gap-3 mb-5">
-                  <div
-                    className="flex items-center justify-center w-11 h-11 rounded-xl bg-white/[0.04] border border-white/10"
-                    style={{ color: step.accent }}
-                  >
-                    {step.icon}
-                  </div>
-                  <span className="text-xs font-bold text-[var(--color-text-muted)] tracking-widest">
-                    STEP {step.number}
-                  </span>
+              <div className="relative p-6 flex flex-col h-full">
+                <span
+                  aria-hidden
+                  className="absolute -top-3 right-3 text-[5.5rem] font-extrabold leading-none text-white/[0.045] select-none pointer-events-none tracking-tighter"
+                >
+                  {step.number}
+                </span>
+                <div
+                  className="flex items-center justify-center w-11 h-11 rounded-xl bg-white/[0.04] border border-white/10 mb-6"
+                  style={{ color: step.accent }}
+                >
+                  {step.icon}
                 </div>
-                <h3 className="text-lg font-bold mb-2 text-white">{step.title}</h3>
+                <h3 className="text-lg font-bold mb-2 text-white tracking-tight">
+                  {step.title}
+                </h3>
                 <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
                   {step.description}
                 </p>
